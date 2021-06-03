@@ -2,7 +2,7 @@
     <li *ngFor="let flatCard of flatCards">
       <span>{{flatCard.category.name}} {{flatCard.id}}</span>
       <div>
-        <a [routerLink]="['', flatCard.id]">
+        <a routerLink="/flats/{{flatCard.id}}">
           {{flatCard.city.name}} {{flatCard.address}}
         </a>
       </div>
