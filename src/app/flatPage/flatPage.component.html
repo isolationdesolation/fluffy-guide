@@ -1,1 +1,25 @@
-<a> page!</a>
+
+<div class="content">
+<h2>г. {{flat?.city?.name }}, {{flat?.address}}</h2>
+
+<div class="card-container">  <h1>Данные по объекту</h1>
+    <h3> {{flat?.extraInformation}}</h3>
+    <p>Адрес: {{flat?.address}}</p>
+    <p>Площадь: {{flat?.square}} м<sup>2</sup></p>
+    <p>Количество комнат: {{flat?.numRooms}}</p>
+    <p>Этаж: {{flat?.floor}}/{{flat?.floorsHouse}}</p>
+    <p>Исполнение: {{flat?.material}}</p>
+    <p>Отделка: {{flat?.finishing}}</p>
+    <p>Срок сдачи: {{flat?.dateConstruction}}</p>
+    <p>Застройщик: {{flat?.constructionCompany}}</p>
+        <div *ngFor="let image of flat?.images">
+            <div> 
+                <img src="{{image.image}}">
+            </div>
+        </div>
+    <p>Стоимость: {{flat?.price}}</p>
+    <p>Контактное лицо: {{flat?.contactPerson}}, {{flat?.contactPhone}}</p>
+    <p>Email: {{flat?.contactEmail}}</p>
+
+</div>
+</div>
