@@ -1,0 +1,11 @@
+<ul class="flatCards">
+    <li *ngFor="let flatCard of flatCards">
+      <span>{{flatCard.category.name}} {{flatCard.id}}</span>
+      <div>
+        <a [routerLink]="['', flatCard.id]">
+          {{flatCard.city.name}} {{flatCard.address}}
+        </a>
+      </div>
+      <p>{{flatCard.square}} кв.м, <span>{{flatCard.price}} ₽</span></p>
+    </li>
+  </ul>

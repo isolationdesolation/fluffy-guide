@@ -1,0 +1,695 @@
+{
+    "count": 18,
+    "next": "https://www.sdvor.com/api/common/flats/?page=2",
+    "previous": null,
+    "results": [
+        {
+            "id": 788,
+            "images": [
+                {
+                    "name": "",
+                    "image": "https://cdn.sdvor.com/assets/storage/apartments/%D0%BD%D0%B0_1_%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D1%83.PNG",
+                    "isPlanImage": false
+                }
+            ],
+            "category": {
+                "id": 8,
+                "name": "квартира"
+            },
+            "commercialCategory": null,
+            "city": {
+                "id": 3,
+                "name": "Нижневартовск"
+            },
+            "address": "ул. Осенняя, д.23, кв. 170 (окна на 1 сторону), подъезд 7",
+            "extraInformation": "453496",
+            "apartment": "170",
+            "isNewFlat": false,
+            "numRooms": 2,
+            "square": 55.0,
+            "squareLot": null,
+            "floor": 3,
+            "floorsHouse": 7,
+            "price": 3050000.0,
+            "material": "панель",
+            "finishing": "чистовая",
+            "dateConstruction": "сдан",
+            "builtYear": null,
+            "readyQuarter": null,
+            "constructionCompany": "Нижневартовскстройдеталь",
+            "contactPerson": "Юлия",
+            "contactCategory": "owner",
+            "contactPhone": "89058224486",
+            "contactEmail": "yuyakovleva@sdvor.com",
+            "isActive": true,
+            "createdAt": "2021-05-28T07:31:26.816513Z",
+            "updatedAt": "2021-05-28T07:31:26.816538Z",
+            "description": "",
+            "district": null,
+            "cityId": 3
+        },
+        {
+            "id": 758,
+            "images": [],
+            "category": {
+                "id": 8,
+                "name": "квартира"
+            },
+            "commercialCategory": null,
+            "city": {
+                "id": 21,
+                "name": "Краснодар"
+            },
+            "address": "ул. Бородинская 156/2, кв .240",
+            "extraInformation": "ка 433010",
+            "apartment": "240",
+            "isNewFlat": false,
+            "numRooms": 2,
+            "square": 74.05,
+            "squareLot": null,
+            "floor": 23,
+            "floorsHouse": 24,
+            "price": 4100000.0,
+            "material": null,
+            "finishing": "предчистовая",
+            "dateConstruction": "4 кв .2019",
+            "builtYear": "2019",
+            "readyQuarter": "4",
+            "constructionCompany": null,
+            "contactPerson": "Юлия",
+            "contactCategory": "owner",
+            "contactPhone": "89058224486",
+            "contactEmail": "yuyakovleva@sdvor.com",
+            "isActive": true,
+            "createdAt": "2020-09-09T09:29:04.786450Z",
+            "updatedAt": "2020-12-08T16:43:47.052067Z",
+            "description": "Квартира») №240 на 23(двадцать третьем) этаже в 1 (первом) подъезде, литер 1 (один) с проектной площадью помещения с учетом балконов и лоджий 74,05 кв. м., в Жилом комплексе «Время», расположенном по адресу: Россия, Краснодарский край, г. Краснодар, Карасунский внутригородской округ, ул. Бородинская, 156/2 на земельном участке с кадастровым номером 23:43:0428005:448.\r\nДом сдан, сейчас на стадии постановки на кадастр.",
+            "district": null,
+            "cityId": 21
+        },
+        {
+            "id": 782,
+            "images": [
+                {
+                    "name": "",
+                    "image": "https://cdn.sdvor.com/assets/storage/apartments/%D0%BD%D0%B0_2_%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D1%8B.PNG",
+                    "isPlanImage": false
+                }
+            ],
+            "category": {
+                "id": 8,
+                "name": "квартира"
+            },
+            "commercialCategory": {
+                "id": 2,
+                "name": "квартира"
+            },
+            "city": {
+                "id": 3,
+                "name": "Нижневартовск"
+            },
+            "address": "ул. Осенняя, д.23, кв. 141 (окна на 2 стороны), подъезд 6",
+            "extraInformation": "453476",
+            "apartment": "141",
+            "isNewFlat": false,
+            "numRooms": 2,
+            "square": 55.0,
+            "squareLot": null,
+            "floor": 1,
+            "floorsHouse": 7,
+            "price": 3000000.0,
+            "material": "панель",
+            "finishing": "чистовая",
+            "dateConstruction": "сдан",
+            "builtYear": "2021",
+            "readyQuarter": null,
+            "constructionCompany": "Нижневартовскстройдеталь",
+            "contactPerson": "Юлия",
+            "contactCategory": "owner",
+            "contactPhone": "89058224486",
+            "contactEmail": "yuyakovleva@sdvor.com",
+            "isActive": true,
+            "createdAt": "2021-05-28T07:21:13.244463Z",
+            "updatedAt": "2021-05-28T07:21:30.171947Z",
+            "description": "Квартира в новом доме с чистовой отделкой от застройщика",
+            "district": null,
+            "cityId": 3
+        },
+        {
+            "id": 773,
+            "images": [],
+            "category": {
+                "id": 5,
+                "name": "участок"
+            },
+            "commercialCategory": null,
+            "city": {
+                "id": 5,
+                "name": "Пермь"
+            },
+            "address": "Пермский край, Оханский р-н, д. Заполье, 59:30:2091002:162",
+            "extraInformation": "412327",
+            "apartment": null,
+            "isNewFlat": false,
+            "numRooms": 1,
+            "square": 21300.0,
+            "squareLot": 213.0,
+            "floor": 1,
+            "floorsHouse": 1,
+            "price": 400000.0,
+            "material": null,
+            "finishing": null,
+            "dateConstruction": null,
+            "builtYear": null,
+            "readyQuarter": null,
+            "constructionCompany": "Нижневартовскстройдеталь",
+            "contactPerson": "Юлия",
+            "contactCategory": "owner",
+            "contactPhone": "89058224486",
+            "contactEmail": "yuyakovleva@sdvor.com",
+            "isActive": true,
+            "createdAt": "2020-11-06T10:04:06.595412Z",
+            "updatedAt": "2020-12-08T16:41:40.900459Z",
+            "description": "Продается большой участок по отличной цене. Рыночная цена намного выше. Кадастровый номер 59:30:2091002:162",
+            "district": null,
+            "cityId": 5
+        },
+        {
+            "id": 783,
+            "images": [
+                {
+                    "name": "",
+                    "image": "https://cdn.sdvor.com/assets/storage/apartments/%D0%BD%D0%B0_2_%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D1%8B.PNG",
+                    "isPlanImage": false
+                }
+            ],
+            "category": {
+                "id": 8,
+                "name": "квартира"
+            },
+            "commercialCategory": {
+                "id": 2,
+                "name": "квартира"
+            },
+            "city": {
+                "id": 3,
+                "name": "Нижневартовск"
+            },
+            "address": "ул. Осенняя, д.23, кв. 147 (окна на 2 стороны), подъезд 6",
+            "extraInformation": "453479",
+            "apartment": "147",
+            "isNewFlat": false,
+            "numRooms": 2,
+            "square": 55.0,
+            "squareLot": null,
+            "floor": 3,
+            "floorsHouse": 7,
+            "price": 3050000.0,
+            "material": "панель",
+            "finishing": "чистовая",
+            "dateConstruction": "сдан",
+            "builtYear": null,
+            "readyQuarter": null,
+            "constructionCompany": "Нижневартовскстройдеталь",
+            "contactPerson": "Юлия",
+            "contactCategory": "owner",
+            "contactPhone": "89058224486",
+            "contactEmail": "yuyakovleva@sdvor.com",
+            "isActive": true,
+            "createdAt": "2021-05-28T07:23:19.934916Z",
+            "updatedAt": "2021-05-28T07:23:19.934947Z",
+            "description": "",
+            "district": null,
+            "cityId": 3
+        },
+        {
+            "id": 784,
+            "images": [
+                {
+                    "name": "",
+                    "image": "https://cdn.sdvor.com/assets/storage/apartments/%D0%BD%D0%B0_2_%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D1%8B.PNG",
+                    "isPlanImage": false
+                }
+            ],
+            "category": {
+                "id": 8,
+                "name": "квартира"
+            },
+            "commercialCategory": {
+                "id": 2,
+                "name": "квартира"
+            },
+            "city": {
+                "id": 3,
+                "name": "Нижневартовск"
+            },
+            "address": "ул. Осенняя, д.23, кв. 153 (окна на 2 стороны), подъезд 6",
+            "extraInformation": "453480",
+            "apartment": "153",
+            "isNewFlat": false,
+            "numRooms": 2,
+            "square": 55.0,
+            "squareLot": null,
+            "floor": 5,
+            "floorsHouse": 7,
+            "price": 3050000.0,
+            "material": "панель",
+            "finishing": "чистовая",
+            "dateConstruction": "сдан",
+            "builtYear": "2021",
+            "readyQuarter": null,
+            "constructionCompany": "Нижневартовскстройдеталь",
+            "contactPerson": "Юлия",
+            "contactCategory": "owner",
+            "contactPhone": "89058224486",
+            "contactEmail": "yuyakovleva@sdvor.com",
+            "isActive": true,
+            "createdAt": "2021-05-28T07:24:38.658920Z",
+            "updatedAt": "2021-05-28T07:24:38.658944Z",
+            "description": "",
+            "district": null,
+            "cityId": 3
+        },
+        {
+            "id": 785,
+            "images": [
+                {
+                    "name": "",
+                    "image": "https://cdn.sdvor.com/assets/storage/apartments/%D0%BD%D0%B0_2_%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D1%8B.PNG",
+                    "isPlanImage": false
+                }
+            ],
+            "category": {
+                "id": 8,
+                "name": "квартира"
+            },
+            "commercialCategory": {
+                "id": 2,
+                "name": "квартира"
+            },
+            "city": {
+                "id": 3,
+                "name": "Нижневартовск"
+            },
+            "address": "ул. Осенняя, д.23, кв. 159 (окна на 2 стороны), подъезд 6",
+            "extraInformation": "453482",
+            "apartment": "159",
+            "isNewFlat": false,
+            "numRooms": 2,
+            "square": 55.0,
+            "squareLot": null,
+            "floor": 7,
+            "floorsHouse": 7,
+            "price": 3050000.0,
+            "material": "панель",
+            "finishing": "чистовая",
+            "dateConstruction": "сдан",
+            "builtYear": null,
+            "readyQuarter": null,
+            "constructionCompany": "Нижневартовскстройдеталь",
+            "contactPerson": "Юлия",
+            "contactCategory": "owner",
+            "contactPhone": "89058224486",
+            "contactEmail": "yuyakovleva@sdvor.com",
+            "isActive": true,
+            "createdAt": "2021-05-28T07:26:01.760013Z",
+            "updatedAt": "2021-05-28T07:26:01.760055Z",
+            "description": "",
+            "district": null,
+            "cityId": 3
+        },
+        {
+            "id": 789,
+            "images": [
+                {
+                    "name": "",
+                    "image": "https://cdn.sdvor.com/assets/storage/apartments/%D0%BD%D0%B0_1_%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D1%83.PNG",
+                    "isPlanImage": false
+                }
+            ],
+            "category": {
+                "id": 8,
+                "name": "квартира"
+            },
+            "commercialCategory": {
+                "id": 2,
+                "name": "квартира"
+            },
+            "city": {
+                "id": 3,
+                "name": "Нижневартовск"
+            },
+            "address": "ул. Осенняя, д.23, кв. 174 (окна на 1 сторону), подъезд 7",
+            "extraInformation": "453497",
+            "apartment": "174",
+            "isNewFlat": false,
+            "numRooms": 2,
+            "square": 55.0,
+            "squareLot": null,
+            "floor": 4,
+            "floorsHouse": 7,
+            "price": 3050000.0,
+            "material": "панель",
+            "finishing": "чистовая",
+            "dateConstruction": "сдан",
+            "builtYear": "2021",
+            "readyQuarter": null,
+            "constructionCompany": "Нижневартовскстройдеталь",
+            "contactPerson": "Юлия",
+            "contactCategory": "owner",
+            "contactPhone": "89058224486",
+            "contactEmail": "yuyakovleva@sdvor.com",
+            "isActive": true,
+            "createdAt": "2021-05-28T07:32:35.524719Z",
+            "updatedAt": "2021-05-28T07:32:35.524747Z",
+            "description": "",
+            "district": null,
+            "cityId": 3
+        },
+        {
+            "id": 772,
+            "images": [],
+            "category": {
+                "id": 8,
+                "name": "квартира"
+            },
+            "commercialCategory": null,
+            "city": {
+                "id": 5,
+                "name": "Пермь"
+            },
+            "address": "Сокольская 10б, кв.169",
+            "extraInformation": "418650",
+            "apartment": "169",
+            "isNewFlat": true,
+            "numRooms": 2,
+            "square": 53.04,
+            "squareLot": null,
+            "floor": 1,
+            "floorsHouse": 15,
+            "price": 2700000.0,
+            "material": null,
+            "finishing": "чистовая",
+            "dateConstruction": "2021 г",
+            "builtYear": "2021",
+            "readyQuarter": "2",
+            "constructionCompany": "трест № 14",
+            "contactPerson": "Юлия",
+            "contactCategory": "owner",
+            "contactPhone": "89058224486",
+            "contactEmail": "yuyakovleva@sdvor.com",
+            "isActive": true,
+            "createdAt": "2020-11-06T09:56:38.337212Z",
+            "updatedAt": "2020-12-08T16:42:03.084962Z",
+            "description": "",
+            "district": null,
+            "cityId": 5
+        },
+        {
+            "id": 777,
+            "images": [
+                {
+                    "name": "",
+                    "image": "https://cdn.sdvor.com/assets/storage/apartments/%D0%BB%D1%8B%D1%81%D1%8C%D0%B2%D0%B0.jpg",
+                    "isPlanImage": false
+                }
+            ],
+            "category": {
+                "id": 5,
+                "name": "участок"
+            },
+            "commercialCategory": null,
+            "city": {
+                "id": 5,
+                "name": "Пермь"
+            },
+            "address": "Г. Лысьва, ул . Чусовская, д. 16 а,",
+            "extraInformation": "участок с фундаментом",
+            "apartment": null,
+            "isNewFlat": false,
+            "numRooms": 1,
+            "square": 3600.0,
+            "squareLot": 3600.0,
+            "floor": 1,
+            "floorsHouse": 1,
+            "price": 650000.0,
+            "material": null,
+            "finishing": null,
+            "dateConstruction": null,
+            "builtYear": null,
+            "readyQuarter": "1",
+            "constructionCompany": null,
+            "contactPerson": "Юлия",
+            "contactCategory": "owner",
+            "contactPhone": "89058224486",
+            "contactEmail": "yuyakovleva@sdvor.com",
+            "isActive": true,
+            "createdAt": "2020-12-01T10:33:55.510463Z",
+            "updatedAt": "2020-12-08T16:38:55.107362Z",
+            "description": "кадастровый номер: 59:09:0011601:50",
+            "district": null,
+            "cityId": 5
+        },
+        {
+            "id": 771,
+            "images": [
+                {
+                    "name": "",
+                    "image": "https://cdn.sdvor.com/assets/storage/apartments/%D0%BA%D0%B0%D0%BC%D1%8B%D1%88%D0%BB%D0%BE%D0%B2.jpg",
+                    "isPlanImage": false
+                }
+            ],
+            "category": {
+                "id": 8,
+                "name": "квартира"
+            },
+            "commercialCategory": null,
+            "city": {
+                "id": 2,
+                "name": "Екатеринбург"
+            },
+            "address": "г. Камышлов, ул. Карловская 1 кв.67",
+            "extraInformation": "419033",
+            "apartment": "67",
+            "isNewFlat": false,
+            "numRooms": 3,
+            "square": 73.8,
+            "squareLot": null,
+            "floor": 3,
+            "floorsHouse": 5,
+            "price": 2100000.0,
+            "material": null,
+            "finishing": "предчистовая",
+            "dateConstruction": "2018",
+            "builtYear": "2018",
+            "readyQuarter": null,
+            "constructionCompany": null,
+            "contactPerson": "Юлия",
+            "contactCategory": "owner",
+            "contactPhone": "89058224486",
+            "contactEmail": "yuyakovleva@sdvor.com",
+            "isActive": true,
+            "createdAt": "2020-10-29T08:48:02.389769Z",
+            "updatedAt": "2020-12-08T16:42:23.393572Z",
+            "description": "",
+            "district": 4,
+            "cityId": 2
+        },
+        {
+            "id": 770,
+            "images": [
+                {
+                    "name": "",
+                    "image": "https://cdn.sdvor.com/assets/storage/apartments/11.jpg",
+                    "isPlanImage": false
+                },
+                {
+                    "name": "",
+                    "image": "https://cdn.sdvor.com/assets/storage/apartments/22.jpg",
+                    "isPlanImage": false
+                },
+                {
+                    "name": "",
+                    "image": "https://cdn.sdvor.com/assets/storage/apartments/%D0%91%D0%B5%D0%B7%D1%8B%D0%BC%D1%8F%D0%BD%D0%BD%D1%8B%D0%B9.jpg",
+                    "isPlanImage": false
+                }
+            ],
+            "category": {
+                "id": 8,
+                "name": "квартира"
+            },
+            "commercialCategory": null,
+            "city": {
+                "id": 2,
+                "name": "Екатеринбург"
+            },
+            "address": "Свердловская обл., г. Арамиль, ул. Гарнизон 195, кв. 56.",
+            "extraInformation": "Продается 2-уровневая квартира по цене ниже застройщика",
+            "apartment": "56",
+            "isNewFlat": false,
+            "numRooms": 3,
+            "square": 97.0,
+            "squareLot": null,
+            "floor": 1,
+            "floorsHouse": 6,
+            "price": 4250000.0,
+            "material": null,
+            "finishing": "черновая",
+            "dateConstruction": "4 кв .2020",
+            "builtYear": null,
+            "readyQuarter": "4",
+            "constructionCompany": null,
+            "contactPerson": "Юлия",
+            "contactCategory": "owner",
+            "contactPhone": "89058224486",
+            "contactEmail": "yuyakovleva@sdvor.com",
+            "isActive": true,
+            "createdAt": "2020-10-22T09:02:32.114400Z",
+            "updatedAt": "2020-12-08T16:42:45.967334Z",
+            "description": "Продается последняя 2-уровневая квартира  (1-2 этаж) в ЖК Стрижи г. Арамиль. Цена ниже чем у застройщика. Дом на стадии ввода в эксплуатацию. Под ипотеку подходит!",
+            "district": 4,
+            "cityId": 2
+        },
+        {
+            "id": 786,
+            "images": [
+                {
+                    "name": "",
+                    "image": "https://cdn.sdvor.com/assets/storage/apartments/%D0%BD%D0%B0_2_%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D1%8B.PNG",
+                    "isPlanImage": false
+                }
+            ],
+            "category": {
+                "id": 8,
+                "name": "квартира"
+            },
+            "commercialCategory": null,
+            "city": {
+                "id": 3,
+                "name": "Нижневартовск"
+            },
+            "address": "ул. Осенняя, д.23, кв. 121 (окна на 2 стороны), подъезд 5",
+            "extraInformation": "453452",
+            "apartment": "121",
+            "isNewFlat": false,
+            "numRooms": 2,
+            "square": 55.0,
+            "squareLot": null,
+            "floor": 2,
+            "floorsHouse": 7,
+            "price": 3050000.0,
+            "material": "панель",
+            "finishing": "чистовая",
+            "dateConstruction": "сдан",
+            "builtYear": null,
+            "readyQuarter": null,
+            "constructionCompany": "Нижневартовскстройдеталь",
+            "contactPerson": "Юлия",
+            "contactCategory": "owner",
+            "contactPhone": "89058224486",
+            "contactEmail": "yuyakovleva@sdvor.com",
+            "isActive": true,
+            "createdAt": "2021-05-28T07:27:49.962070Z",
+            "updatedAt": "2021-05-28T07:27:49.962102Z",
+            "description": "",
+            "district": null,
+            "cityId": 3
+        },
+        {
+            "id": 787,
+            "images": [
+                {
+                    "name": "",
+                    "image": "https://cdn.sdvor.com/assets/storage/apartments/%D0%BD%D0%B0_1_%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D1%83.PNG",
+                    "isPlanImage": false
+                }
+            ],
+            "category": {
+                "id": 8,
+                "name": "квартира"
+            },
+            "commercialCategory": {
+                "id": 2,
+                "name": "квартира"
+            },
+            "city": {
+                "id": 3,
+                "name": "Нижневартовск"
+            },
+            "address": "ул. Осенняя, д.23, кв. 166 (окна на 1 сторону), подъезд 7",
+            "extraInformation": "453484",
+            "apartment": "166",
+            "isNewFlat": false,
+            "numRooms": 2,
+            "square": 55.0,
+            "squareLot": null,
+            "floor": 2,
+            "floorsHouse": 7,
+            "price": 3050000.0,
+            "material": "панель",
+            "finishing": "чистовая",
+            "dateConstruction": "сдан",
+            "builtYear": null,
+            "readyQuarter": null,
+            "constructionCompany": "Нижневартовскстройдеталь",
+            "contactPerson": "Юлия",
+            "contactCategory": "owner",
+            "contactPhone": "89058224486",
+            "contactEmail": "yuyakovleva@sdvor.com",
+            "isActive": true,
+            "createdAt": "2021-05-28T07:30:07.957709Z",
+            "updatedAt": "2021-05-28T07:30:07.957740Z",
+            "description": "",
+            "district": null,
+            "cityId": 3
+        },
+        {
+            "id": 790,
+            "images": [
+                {
+                    "name": "",
+                    "image": "https://cdn.sdvor.com/assets/storage/apartments/%D0%BD%D0%B0_1_%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D1%83.PNG",
+                    "isPlanImage": false
+                }
+            ],
+            "category": {
+                "id": 8,
+                "name": "квартира"
+            },
+            "commercialCategory": {
+                "id": 2,
+                "name": "квартира"
+            },
+            "city": {
+                "id": 3,
+                "name": "Нижневартовск"
+            },
+            "address": "ул. Осенняя, д.23, кв. 178 (окна на 1 сторону), подъезд 7",
+            "extraInformation": "453498",
+            "apartment": "178",
+            "isNewFlat": false,
+            "numRooms": 2,
+            "square": 55.0,
+            "squareLot": null,
+            "floor": 5,
+            "floorsHouse": 7,
+            "price": 3050000.0,
+            "material": "панель",
+            "finishing": "чистовая",
+            "dateConstruction": "сдан",
+            "builtYear": "2021",
+            "readyQuarter": null,
+            "constructionCompany": "Нижневартовскстройдеталь",
+            "contactPerson": "Юлия",
+            "contactCategory": "owner",
+            "contactPhone": "89058224486",
+            "contactEmail": "yuyakovleva@sdvor.com",
+            "isActive": true,
+            "createdAt": "2021-05-28T07:33:37.368268Z",
+            "updatedAt": "2021-05-28T07:33:37.368315Z",
+            "description": "",
+            "district": null,
+            "cityId": 3
+        }
+    ]
+}
