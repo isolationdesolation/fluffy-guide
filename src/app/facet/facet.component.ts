@@ -13,11 +13,14 @@ import { Flat } from '../flats/flatDataType';
 export class FacetComponent implements OnInit { 
    
   flatCards: Flat[]=[];
+  filtratedCards: Flat[]=[]
    
   constructor(private http: HttpClient){}
     
   ngOnInit(){
         
       this.http.get('https://www.sdvor.com/api/common/flats').subscribe((data: any) => this.flatCards=data["results"]);
+
   }
+
 }
