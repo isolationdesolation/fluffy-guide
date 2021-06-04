@@ -4,8 +4,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FlatsListComponent } from './flats/flatsList.component';
 import { FlatPageComponent } from './flatPage/flatPage.component';
-import {FacetComponent} from './facet/facet.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,12 +14,13 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     FlatsListComponent,
     FlatPageComponent,
-    FacetComponent
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

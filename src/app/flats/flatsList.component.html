@@ -1,11 +1,102 @@
 <h1>Продажа квартир</h1>
 <aside>
-    <app-facet></app-facet>
+    <span class="cities">
+        <select>
+            <option>Все города</option>
+            <option>Нижневартовск</option>
+            <option>Екатеринбург</option>
+            <option>Челябинск</option>
+            <option>Пермь</option>
+            <option>Сургут</option>
+            <option>Тюмень</option>
+            <option>Москва</option>
+    
+        </select>
+    </span>
+    
+    <ul class="categories">
+        <li>
+            <div>
+                <input type="checkbox" name="category">
+                <label for="category"> квартира </label>
+            </div>
+        </li>
+    
+        <li>
+            <div>
+                <input type="checkbox" name="category">
+                <label for="category"> дом </label>
+            </div>
+        </li>
+    
+        <li>
+            <div>
+                <input type="checkbox" name="category">
+                <label for="category"> участок </label>
+            </div>
+        </li>
+    
+        <li>
+            <div>
+                <input type="checkbox" name="category">
+                <label for="category"> дом с участком </label>
+            </div>
+        </li>
+    
+        <li>
+            <div>
+                <input type="checkbox" name="category">
+                <label for="category"> дача </label>
+            </div>
+        </li>
+    
+        <li>
+            <div>
+                <input type="checkbox" name="category">
+                <label for="category"> коммерческая </label>
+            </div>
+        </li>
+    
+    
+    </ul>
+    
+    <ul class="rooms">
+        <li>
+            <div>
+                <input type="checkbox" name="rooms"  (click)="filterByRooms()" >
+                <label for="room"> 1 </label>
+            </div>
+        </li>
+        <li>
+            <div>
+                <input type="checkbox" name="rooms" (click)="filterByRooms()">
+                <label for="room"> 2 </label>
+            </div>
+        </li>
+        <li>
+            <div>
+                <input type="checkbox" name="rooms" (click)="filterByRooms()" >
+                <label for="room"> 3 </label>
+            </div>
+        </li>
+        <li>
+            <div>
+                <input type="checkbox" name="rooms" (click)="filterByRooms()">
+                <label for="room"> 4 </label>
+            </div>
+        </li>
+        <li>
+            <div>
+                <input type="checkbox" name="rooms" (click)="filterByRooms()">
+                <label for="room"> 5 </label>
+            </div>
+        </li>
+    </ul>
 </aside>
 <section>
 
     <ul class="flatCards">
-        <li *ngFor="let flatCard of flatCards">
+        <li *ngFor="let flatCard of flatCards" >
             <span>{{flatCard.category.name}}, {{flatCard.id}}</span>
             <div>
                 <a class="" routerLink="/flats/{{flatCard.id}}">
