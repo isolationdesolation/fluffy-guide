@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Flat } from './flatDataType';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { categoryId, cityId } from "./facetOptions"
 
 @Injectable()

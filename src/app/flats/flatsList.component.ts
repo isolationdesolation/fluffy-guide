@@ -1,12 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { Flat } from './flatDataType';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+
 import { HttpService } from "./flats.service"
-import { FilterPipe } from "src/app/pipes/filter.pipe";
-import { FlatTypePipe } from "src/app/pipes/flatType.pipe";
-import { CityPipe } from "src/app/pipes/city.pipe";
+
 import { roomsOptions, categoryOptions, citySelect } from "src/app/flats/facetOptions"
 
 export interface roomsCheckbox {
