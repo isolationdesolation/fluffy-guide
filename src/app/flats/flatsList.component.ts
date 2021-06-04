@@ -1,10 +1,17 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Flat } from './flatDataType';
-import { ActivatedRoute} from '@angular/router';
-import {Subscription} from 'rxjs';
-import {FilterPipe} from "src/app/pipes/filter.pipe";
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { FilterPipe } from "src/app/pipes/filter.pipe";
+import { FlatTypePipe} from "src/app/pipes/flatType.pipe";
+import { CityPipe} from "src/app/pipes/city.pipe";
+import { roomsOptions, categoryOptions, citySelect } from "src/app/flats/facetOptions"
 
+export interface roomsCheckbox {
+  roomsAmount: number;
+  chosen: boolean;
+}
 
 @Component({
   selector: 'app-flats',
@@ -13,24 +20,51 @@ import {FilterPipe} from "src/app/pipes/filter.pipe";
 
 })
 
-export class FlatsListComponent implements OnInit { 
-   
-  @Output() sizeChange = new EventEmitter<number>();
+
+export class FlatsListComponent implements OnInit {
 
 
-  flatCards: Flat[]=[];
+  flatCards: Flat[] = [];
   filterPipe: FilterPipe = new FilterPipe;
-  
+  flatTypePipe: FlatTypePipe = new FlatTypePipe;
 
- 
-  constructor(private http: HttpClient){
+  checkboxesRoom = roomsOptions;
+  checkboxesCategory = categoryOptions;
+  citySelect = citySelect;
+
+
+  constructor(private http: HttpClient) {
 
   }
-    
-  filterByRooms() {
-    this.flatCards = this.filterPipe.transform(this.flatCards, 2)
+
+  onRoomsCheckboxChange(e: any) {
+  
+    if (e.target.checked) {
+      this.flatCards = this.filterPipe.transform(this.flatCards, e.target.value)
+      console.log(typeof(e.target.value))
+    } else {
+      this.http.get('https://www.sdvor.com/api/common/flats').subscribe((data: any) => this.flatCards = data["results"])
+    }
+  }
+
+  onCategoryCheckboxChange(e: any) {
+    if (e.target.checked) {
+      this.flatCards = this.flatTypePipe.transform(this.flatCards, e.target.value)
+      console.log(typeof(e.target.value))
+    } else {
+      this.http.get('https://www.sdvor.com/api/common/flats').subscribe((data: any) => this.flatCards = data["results"])
+    }
+  }
+
+  onChange(newValue: any) {
+    console.log(newValue);
+    this.flatCards = this.flatTypePipe.transform(this.flatCards, newValue)
 }
-  ngOnInit(){
-      this.http.get('https://www.sdvor.com/api/common/flats').subscribe((data: any) => this.flatCards=data["results"]);
+
+  
+
+
+  ngOnInit() {
+    this.http.get('https://www.sdvor.com/api/common/flats').subscribe((data: any) => this.flatCards = data["results"]);
   }
 }
