@@ -3,6 +3,13 @@ h1 {
   font-weight: 500;
 }
 
+li {
+  list-style-type: none;
+}
+
+select {
+  margin-left: 40px;
+}
 aside {
 float: left;
 width: 250px;
@@ -11,6 +18,8 @@ section {
 margin-left: 280px;
 padding-bottom: 50px;
 }
+
+
 
 .flatCards {
     margin: 0 0 2em 0;

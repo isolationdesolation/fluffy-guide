@@ -51,16 +51,17 @@ export class FlatsListComponent implements OnInit {
   onCategoryCheckboxChange(e: any) {
     if (e.target.checked) {
       this.flatCards = this.flatTypePipe.transform(this.flatCards, e.target.value)
-      console.log(typeof(e.target.value))
     } else {
       this.http.get('https://www.sdvor.com/api/common/flats').subscribe((data: any) => this.flatCards = data["results"])
     }
   }
 
-  onChange(newValue: any) {
-    console.log(newValue);
-    this.flatCards = this.cityPipe.transform(this.flatCards, newValue)
-}
+  onChange(e: any) {
+    if (e.target.selected) {
+      this.flatCards = this.cityPipe.transform(this.flatCards, e.target.value)
+    } else {
+      this.http.get('https://www.sdvor.com/api/common/flats').subscribe((data: any) => this.flatCards = data["results"])
+    }}
 
   
 

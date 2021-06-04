@@ -12,7 +12,7 @@ export class CityPipe implements PipeTransform {
     if (cityName === "Все города" || "") {
       return flats;
     }
-    return flats.filter(flat => { return flat.city.name === cityName})
+    return flats.filter(flat => {console.log(flat); return flat.city.name === cityName})
     }
 
     
