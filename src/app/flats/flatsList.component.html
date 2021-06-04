@@ -1,8 +1,8 @@
 <h1>Продажа квартир</h1>
 <aside>
     <span class="cities">
-        <select>
-            <option *ngFor="let city of citySelect" [value]="city" (change)="onChange($event)">{{city}} 
+        <select (ngModelChange)="onCityChange($event)"  [(ngModel)]="selectedCity">
+            <option *ngFor="let city of citySelect" [ngValue]="city">{{city}} 
         </select>
     </span>
     

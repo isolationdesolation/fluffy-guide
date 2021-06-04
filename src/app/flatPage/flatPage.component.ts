@@ -22,7 +22,7 @@ export class FlatPageComponent implements OnInit {
 
     ngOnInit() {
         const routeParams = this.route.snapshot.paramMap;
-        const flatId = Number(routeParams.get('id'));
-        this.http.get(`https://www.sdvor.com/api/common/flats/${flatId}`).subscribe((data: any) => this.flat=data);
+        const flatIdFromRoute = Number(routeParams.get('id'));
+        this.http.get(`https://www.sdvor.com/api/common/flats/${flatIdFromRoute}`).subscribe((data: any) => this.flat=data);
     }
 }

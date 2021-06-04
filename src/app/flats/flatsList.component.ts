@@ -3,9 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Flat } from './flatDataType';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { HttpService } from "./flats.service"
 import { FilterPipe } from "src/app/pipes/filter.pipe";
-import { FlatTypePipe} from "src/app/pipes/flatType.pipe";
-import { CityPipe} from "src/app/pipes/city.pipe";
+import { FlatTypePipe } from "src/app/pipes/flatType.pipe";
+import { CityPipe } from "src/app/pipes/city.pipe";
 import { roomsOptions, categoryOptions, citySelect } from "src/app/flats/facetOptions"
 
 export interface roomsCheckbox {
@@ -17,6 +18,7 @@ export interface roomsCheckbox {
   selector: 'app-flats',
   templateUrl: './flatsList.component.html',
   styleUrls: ['./flatsList.component.css'],
+  providers: [HttpService]
 
 })
 
@@ -25,48 +27,46 @@ export class FlatsListComponent implements OnInit {
 
 
   flatCards: Flat[] = [];
-  filterPipe: FilterPipe = new FilterPipe;
-  flatTypePipe: FlatTypePipe = new FlatTypePipe;
-  cityPipe: CityPipe = new CityPipe;
+  selectedCity: string = "Все города";
 
   checkboxesRoom = roomsOptions;
   checkboxesCategory = categoryOptions;
   citySelect = citySelect;
 
 
-  constructor(private http: HttpClient) {
+  constructor(private httpService: HttpService) {
 
   }
 
   onRoomsCheckboxChange(e: any) {
-  
     if (e.target.checked) {
-      this.flatCards = this.filterPipe.transform(this.flatCards, e.target.value)
-      console.log(typeof(e.target.value))
-    } else {
-      this.http.get('https://www.sdvor.com/api/common/flats').subscribe((data: any) => this.flatCards = data["results"])
+      this.httpService.getFlatsWithFacets(1, undefined, undefined, e.target.value).subscribe((data: any) => this.flatCards = data["results"]);
+    }
+    else {
+      this.httpService.getFlatsWithFacets(1).subscribe((data: any) => this.flatCards = data["results"]);
     }
   }
 
   onCategoryCheckboxChange(e: any) {
     if (e.target.checked) {
-      this.flatCards = this.flatTypePipe.transform(this.flatCards, e.target.value)
+
+      this.httpService.getFlatsWithFacets(1, undefined, e.target.value).subscribe((data: any) => this.flatCards = data["results"]);
     } else {
-      this.http.get('https://www.sdvor.com/api/common/flats').subscribe((data: any) => this.flatCards = data["results"])
+      this.httpService.getFlatsWithFacets(1).subscribe((data: any) => this.flatCards = data["results"]);
     }
   }
 
-  onChange(e: any) {
-    if (e.target.selected) {
-      this.flatCards = this.cityPipe.transform(this.flatCards, e.target.value)
-    } else {
-      this.http.get('https://www.sdvor.com/api/common/flats').subscribe((data: any) => this.flatCards = data["results"])
-    }}
-
-  
+  onCityChange(city: string) {
+    if (city !== "Все города") {
+      this.httpService.getFlatsWithFacets(1, city).subscribe((data: any) => this.flatCards = data["results"]);
+    }
+    else {
+      this.httpService.getFlatsWithFacets(1).subscribe((data: any) => this.flatCards = data["results"]);
+    }
+  }
 
 
   ngOnInit() {
-    this.http.get('https://www.sdvor.com/api/common/flats').subscribe((data: any) => this.flatCards = data["results"]);
+    this.httpService.getFlatsWithFacets(1).subscribe((data: any) => this.flatCards = data["results"]);
   }
 }

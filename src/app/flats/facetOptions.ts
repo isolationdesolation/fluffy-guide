@@ -49,3 +49,22 @@ export const categoryOptions = [
         chosen: false
     }
 ]
+
+export const categoryId: Record<string, string> = {
+    "квартира": "8",
+    "дом": "4",
+    "участок": "5", 
+    "дом с участком": "10",
+    "дача": "11",
+    "коммерческая": "9",
+}
+
+export const cityId: Record<string, string> = {
+    "Нижневартовск": "3",
+    "Челябинск": "13",
+    "Пермь": "5",
+    "Сургут": "6",
+    "Тюмень": "8",
+    "Москва": "1",
+    "Екатеринбург": "2",
+}
