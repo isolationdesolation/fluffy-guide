@@ -27,6 +27,7 @@ export class FlatsListComponent implements OnInit {
   flatCards: Flat[] = [];
   filterPipe: FilterPipe = new FilterPipe;
   flatTypePipe: FlatTypePipe = new FlatTypePipe;
+  cityPipe: CityPipe = new CityPipe;
 
   checkboxesRoom = roomsOptions;
   checkboxesCategory = categoryOptions;
@@ -58,7 +59,7 @@ export class FlatsListComponent implements OnInit {
 
   onChange(newValue: any) {
     console.log(newValue);
-    this.flatCards = this.flatTypePipe.transform(this.flatCards, newValue)
+    this.flatCards = this.cityPipe.transform(this.flatCards, newValue)
 }
 
   
