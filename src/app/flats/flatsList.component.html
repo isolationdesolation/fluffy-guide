@@ -1,37 +1,74 @@
 <h1>Продажа квартир</h1>
-<aside>
-    <span class="cities">
-        <select (ngModelChange)="onCityChange($event)"  [(ngModel)]="selectedCity">
-            <option *ngFor="let city of citySelect" [ngValue]="city">{{city}} 
-        </select>
-    </span>
-    
-    <ul class="category">
-        <li *ngFor="let category of checkboxesCategory">
-            <input type="checkbox" [value]="category.name" (change)="onCategoryCheckboxChange($event)"> {{category.name}}
-        </li>
-        
-    </ul>
-    
-    <ul class="rooms-number">
-        <li *ngFor="let checkbox of checkboxesRoom">
-            <input type="checkbox" [value]="checkbox.roomsAmount" (change)="onRoomsCheckboxChange($event)"> {{checkbox.roomsAmount}}
-        </li>
-        
-    </ul>
-</aside>
-<section>
+<div class="content">
+    <aside>
 
-    <ul class="flatCards">
-        <li *ngFor="let flatCard of flatCards" >
-            <span>{{flatCard.category.name}}, {{flatCard.id}}</span>
-            <div>
-                <a class="" routerLink="/flats/{{flatCard.id}}">
-                    {{flatCard.city.name}} {{flatCard.address}}
-                </a>
+        <div class="facet-block">
+            <h2>Город</h2>
+            <select (ngModelChange)="onCityChange($event)" [(ngModel)]="selectedCity">
+                <option *ngFor="let city of citySelect" [ngValue]="city">{{city}}
+            </select>
+        </div>
+        <div class="facet-block">
+            <h2>Категория</h2>
+            <ul>
+                <li *ngFor="let category of checkboxesCategory">
+                    <label>
+                        <input type="checkbox" [value]="category.name" (change)="onCategoryCheckboxChange($event)">
+                    </label>
+                    <label>
+                        <span>{{category.name}}</span>
+                    </label>
+                </li>
+
+            </ul>
+        </div>
+        <div class="facet-block">
+            <h2>Количество комнат</h2>
+            <ul>
+                <li *ngFor="let checkbox of checkboxesRoom">
+                    <input type="checkbox" [value]="checkbox.roomsAmount" (change)="onRoomsCheckboxChange($event)">
+                    {{checkbox.roomsAmount}}
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <section>
+        <ng-container *ngIf="{flatResponse: flatResponse$ | async} as data;">
+
+            <div class="listing-container">
+                <ul class="flatCards">
+                    <li *ngFor="let flatCard of data.flatResponse?.results">
+                        <span>{{flatCard?.category?.name}}, {{flatCard?.id}}</span>
+                        <div>
+                            <a class="" routerLink="/flats/{{flatCard?.id}}">
+                                {{flatCard?.city?.name}} {{flatCard?.address}}
+                            </a>
+                        </div>
+                        <p>{{flatCard?.square}} кв.м, <span>{{flatCard?.price}} ₽</span></p>
+                    </li>
+                </ul>
             </div>
-            <p>{{flatCard.square}} кв.м, <span>{{flatCard.price}} ₽</span></p>
-        </li>
-    </ul>
 
-</section>
+            <div class="pagination" *ngIf="data.flatResponse!.next !== null">
+                <button appPagination #pagination="appPagination" [totalPages]="2" (pageChange)="onPageChange($event)"
+                    (click)="pagination.first()" [disabled]="pagination.isFirst">
+                    << </button>
+                        <button appPagination #pagination="appPagination" [totalPages]="2"
+                            (pageChange)="onPageChange($event)" (click)="pagination.prev()"
+                            [ngClass]="{'custom-theme': currentPageNumber == defaultPage}">
+                            1
+                        </button>
+                        <button appPagination #pagination="appPagination" [totalPages]="2"
+                            (pageChange)="onPageChange($event)" (click)="pagination.next()"
+                            [ngClass]="{'custom-theme' : currentPageNumber != defaultPage}">
+                            2
+                        </button>
+                        <button appPagination #pagination="appPagination" [totalPages]="2"
+                            (pageChange)="onPageChange($event)" (click)="pagination.last()"
+                            [disabled]="pagination.isLast">
+                            >>
+                        </button>
+            </div>
+        </ng-container>
+    </section>
+</div>

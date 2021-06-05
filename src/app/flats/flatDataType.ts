@@ -1,8 +1,10 @@
+
+
 export interface FlatImage {
     name: string,
     image: string,
     isPlanImage: boolean
-  }
+}
 
 export interface FlatCategory {
     id: number;
@@ -50,4 +52,12 @@ export interface Filter {
     city?: number;
     category: number[];
     room_count: number[];
+}
+
+
+export interface FlatResponse {
+    count: number;
+    next: string | null;
+    previous: string | null;
+    results: Flat[] | null;
 }

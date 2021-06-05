@@ -1,6 +1,22 @@
 h1 {
   font: 400 40px Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
   font-weight: 500;
+  margin-left: 10px;
+}
+
+h2 {
+  font: 500 20px Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+  color: #273142;
+  margin-left: 10px;
+  margin-block-start: 0;
+}
+
+input {
+  font-size: 1em;
+}
+
+label span:hover {
+  color: #af1212
 }
 
 li {
@@ -8,61 +24,110 @@ li {
 }
 
 select {
-  margin-left: 40px;
+  margin-left: 10px;
+  font-size: 16px;
+  height: 50px;
+  border-radius: .25rem;
+  padding: 0 16px;
+  background-color: white;
+  border: 1 solid #d4d6d9;
+  line-height: 1.15;
 }
+
 aside {
 float: left;
 width: 250px;
 }
+
 section {
 margin-left: 280px;
 padding-bottom: 50px;
 }
 
+button.custom-theme {
+  background-color: #ffd000;
+  border-color: #ffd000;
+}
 
+button {
+  background-color: transparent;
+  padding: 5px 5px;
+  border-radius: 2px;
+  width: 32px;
+  height: 32px;
+  margin-right: 5px;
+}
+
+.facet-block {
+  background-color: white;
+  font: 400 16px Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+  margin-left: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px ;
+}
+
+ul {
+  padding-inline-start: 10px; 
+}
+
+.content{
+  margin-top: 10px;
+}
+
+.pagination {
+  position:absolute;
+  left:30%;
+
+transform: translate(-50%,-50%);
+}
+
+.listing-container {
+  position: relative;
+}
 
 .flatCards {
-    margin: 0 0 2em 0;
-    list-style-type: none;
-    padding: 0;
-    width: 40em;
-  }
-  .flatCards li {
-    cursor: text;
-    background-color: #ffffff;
-    padding: 16px;
-    margin-bottom: 16px;
-    font: 400 16px Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
-  }
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 40em;
+}
+.flatCards li {
+  cursor: text;
+  background-color: #ffffff;
+  padding: 16px;
+  margin-bottom: 16px;
+  font: 400 16px Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+}
 
-  .flatCards li span {
-    font-size: 14px;
-  }
+.flatCards li span {
+  font-size: 14px;
+}
 
-  .flatCards li div {
-    font-size: 24px;
-  }
+.flatCards li div {
+  font-size: 24px;
+}
 
-  a:link,
-  a:visited,
-  a:hover,
-  a:active {
-    text-decoration: none; 
-    color: #525a68
-  }
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none; 
+  color: #525a68
+}
 
-  .flatCards li div a:hover {
-    color: #af1212;
-    cursor: pointer;
-  }
+.flatCards li div a:hover {
+  color: #af1212;
+  cursor: pointer;
+}
 
-  .flatCards li p {
-    font-size: 16px;
-    color: black;
-  }
+.flatCards li p {
+  font-size: 16px;
+  color: black;
+}
 
-  .flatCards li p span {
-    font-size: 16px;
-    font-weight: 500;
-  }
+.flatCards li p span {
+  font-size: 16px;
+  font-weight: 500;
+}
   

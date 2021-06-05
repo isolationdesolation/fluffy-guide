@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { FlatsListComponent } from './flats/flatsList.component';
 import { FlatPageComponent } from './flatPage/flatPage.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FilterPipe } from './pipes/filter.pipe';
+import {PaginationDirective} from './directives/pagination.directive';
+import { ActiveDirective } from './directives/active.directive';
 import { FormsModule } from '@angular/forms';
 
 
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     FlatsListComponent,
     FlatPageComponent,
-    FilterPipe
+    PaginationDirective,
+    ActiveDirective
   ],
   imports: [
     BrowserModule,

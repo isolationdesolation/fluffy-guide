@@ -1,25 +1,36 @@
+<ng-container
+  *ngIf="
+    {
+      flat: flat$ | async
+    } as data;
+  "
+>
+
 
 <div class="content">
-<h2>г.{{flat?.city?.name }}, {{flat?.address}}</h2>
-
-<div class="card-container">  <h1>Данные по объекту</h1>
-    <h3> {{flat?.extraInformation}}</h3>
-    <p>Адрес: {{flat?.address}}</p>
-    <p>Площадь: {{flat?.square}} м<sup>2</sup></p>
-    <p>Количество комнат: {{flat?.numRooms}}</p>
-    <p>Этаж: {{flat?.floor}}/{{flat?.floorsHouse}}</p>
-    <p>Исполнение: {{flat?.material}}</p>
-    <p>Отделка: {{flat?.finishing}}</p>
-    <p>Срок сдачи: {{flat?.dateConstruction}}</p>
-    <p>Застройщик: {{flat?.constructionCompany}}</p>
-        <div *ngFor="let image of flat?.images">
-            <div> 
-                <img src="{{image.image}}">
+    <h2>г.{{data.flat?.city?.name }}, {{data.flat?.address}}</h2>
+    
+    <div class="card-container">  <h1>Данные по объекту</h1>
+        <h3> {{data.flat?.extraInformation}}</h3>
+        <p>Адрес: {{data.flat?.address}}</p>
+        <p>Площадь: {{data.flat?.square}} м<sup>2</sup></p>
+        <p>Количество комнат: {{data.flat?.numRooms}}</p>
+        <p>Этаж: {{data.flat?.floor}}/{{data.flat?.floorsHouse}}</p>
+        <p>Исполнение: {{data.flat?.material}}</p>
+        <p>Отделка: {{data.flat?.finishing}}</p>
+        <p>Срок сдачи: {{data.flat?.dateConstruction}}</p>
+        <p>Застройщик: {{data.flat?.constructionCompany}}</p>
+            <div *ngFor="let image of data.flat?.images">
+                <div> 
+                    <img src="{{image.image}}">
+                </div>
             </div>
-        </div>
-    <p>Стоимость: {{flat?.price}}</p>
-    <p>Контактное лицо: {{flat?.contactPerson}}, {{flat?.contactPhone}}</p>
-    <p>Email: {{flat?.contactEmail}}</p>
+        <p>Стоимость: {{data.flat?.price}}</p>
+        <p>Контактное лицо: {{data.flat?.contactPerson}}, {{data.flat?.contactPhone}}</p>
+        <p>Email: {{data.flat?.contactEmail}}</p>
+    
+    </div>
+    </div>
 
-</div>
-</div>
+
+</ng-container>
