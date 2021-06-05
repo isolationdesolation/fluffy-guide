@@ -8,7 +8,6 @@ const routes: Routes = [
   {path: '',redirectTo: '/flats', pathMatch : 'full'},
   {path: 'flats', component: FlatsListComponent},
   {path: 'flats/:id', component: FlatPageComponent}, 
-
 ]
 
 @NgModule({
