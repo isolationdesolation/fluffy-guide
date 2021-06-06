@@ -1,3 +1,7 @@
+<pre *ngIf="!(flat$ | async)"> <loader></loader></pre>
+
+<div class="content">
+
 <ng-container
   *ngIf="
     {
@@ -6,8 +10,6 @@
   "
 >
 
-
-<div class="content">
     <h2>г.{{data.flat?.city?.name }}, {{data.flat?.address}}</h2>
     
     <div class="card-container">  <h1>Данные по объекту</h1>
@@ -30,7 +32,6 @@
         <p>Email: {{data.flat?.contactEmail}}</p>
     
     </div>
-    </div>
-
 
 </ng-container>
+</div>

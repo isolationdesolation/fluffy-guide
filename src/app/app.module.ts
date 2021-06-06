@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FlatsListComponent } from './flats/flatsList.component';
 import { FlatPageComponent } from './flatPage/flatPage.component';
+import { LoaderComponent } from "./loader/loader.component";
 import { HttpClientModule } from '@angular/common/http';
 import { PaginationDirective } from './directives/pagination.directive';
 import { ActiveDirective } from './directives/active.directive';
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     FlatPageComponent,
     PaginationDirective,
     ActiveDirective,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
