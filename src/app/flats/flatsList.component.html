@@ -49,24 +49,19 @@
                 </ul>
             </div>
 
-            <div class="pagination" *ngIf="data.flatResponse!.next !== null">
+            <div class="pagination" *ngIf="data.flatResponse!.count !== 0">
                 <button appPagination #pagination="appPagination" [totalPages]="2" (pageChange)="onPageChange($event)"
-                    (click)="pagination.first()" [disabled]="pagination.isFirst">
-                    << </button>
-                        <button appPagination #pagination="appPagination" [totalPages]="2"
-                            (pageChange)="onPageChange($event)" (click)="pagination.prev()"
-                            [ngClass]="{'custom-theme': currentPageNumber == defaultPage}">
-                            1
-                        </button>
+                    (click)="pagination.first()" [disabled]="data.flatResponse!.previous === null" *ngIf="data.flatResponse!.previous !== null">
+                    < </button>
                         <button appPagination #pagination="appPagination" [totalPages]="2"
                             (pageChange)="onPageChange($event)" (click)="pagination.next()"
-                            [ngClass]="{'custom-theme' : currentPageNumber != defaultPage}">
-                            2
+                            *ngIf=" data.flatResponse!.previous !== null || (currentPageNumber == 1 && data.flatResponse!.next!== null)">
+                            {{currentPageNumber}}
                         </button>
                         <button appPagination #pagination="appPagination" [totalPages]="2"
                             (pageChange)="onPageChange($event)" (click)="pagination.last()"
-                            [disabled]="pagination.isLast">
-                            >>
+                            [disabled]="pagination.isLast" *ngIf="data.flatResponse!.next !== null">
+                            >
                         </button>
             </div>
         </ng-container>
