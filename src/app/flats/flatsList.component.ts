@@ -27,7 +27,6 @@ export class FlatsListComponent implements OnInit {
   citySelect = citySelect;
 
   constructor(private httpService: HttpService) {
-
   }
 
   onRoomsCheckboxChange(e: any) {
@@ -68,4 +67,5 @@ export class FlatsListComponent implements OnInit {
   ngOnInit() {
     this.flatResponse$ = this.httpService.getFlatsWithFacets(this.defaultPage);
   }
+
 }

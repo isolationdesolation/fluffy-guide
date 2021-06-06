@@ -34,7 +34,6 @@
     </aside>
     <section>
         <ng-container *ngIf="{flatResponse: flatResponse$ | async} as data;">
-
             <div class="listing-container">
                 <ul class="flatCards">
                     <li *ngFor="let flatCard of data.flatResponse?.results">
@@ -51,15 +50,16 @@
 
             <div class="pagination" *ngIf="data.flatResponse!.count !== 0">
                 <button appPagination #pagination="appPagination" [totalPages]="2" (pageChange)="onPageChange($event)"
-                    (click)="pagination.first()" [disabled]="data.flatResponse!.previous === null" *ngIf="data.flatResponse!.previous !== null">
+                    (click)="pagination.first()" [disabled]="data.flatResponse!.previous === null"
+                    *ngIf="data.flatResponse!.previous !== null">
                     < </button>
                         <button appPagination #pagination="appPagination" [totalPages]="2"
-                            (pageChange)="onPageChange($event)" (click)="pagination.next()"
+                            (pageChange)="onPageChange($event)"
                             *ngIf=" data.flatResponse!.previous !== null || (currentPageNumber == 1 && data.flatResponse!.next!== null)">
                             {{currentPageNumber}}
                         </button>
                         <button appPagination #pagination="appPagination" [totalPages]="2"
-                            (pageChange)="onPageChange($event)" (click)="pagination.last()"
+                            (pageChange)="onPageChange($event)" (click)="pagination.next()"
                             [disabled]="pagination.isLast" *ngIf="data.flatResponse!.next !== null">
                             >
                         </button>
