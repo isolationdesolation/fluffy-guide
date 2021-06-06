@@ -13,6 +13,8 @@ h2 {
 
 input {
     font-size: 1em;
+    height: 1.3em;
+    width: 1.3em;
 }
 
 pre {
