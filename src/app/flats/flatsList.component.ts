@@ -20,7 +20,7 @@ export class FlatsListComponent implements OnInit {
   checkboxesRoom = roomsOptions;
   checkboxesCategory = categoryOptions;
   citySelect = citySelect;
-  
+
   flatResponse$: Observable<FlatResponse> | undefined;
   flatCard: Flat | undefined;
 
@@ -48,23 +48,28 @@ export class FlatsListComponent implements OnInit {
       [name: string]: FormControl;
     }
 
+    const categories: FormData = {};
+
     const countRooms: FormData = {};
+
+    const cities: FormData = {};
+
     this.countRooms.forEach((item, index) => {
       countRooms[index] = new FormControl();
     });
 
-    console.log(this.countRooms)
-    // this.categories.forEach((item, index) => {
-    //   this.categories[index] = new FormControl();
-    // })
+    this.categories.forEach((item, index) => {
+      categories[index] = new FormControl();
+    })
 
-
-
+    this.cities.forEach((item, index) => {
+      cities[index] = new FormControl();
+    })
 
     this.form = new FormGroup({
       cities: new FormControl(""),
-      // categories: new FormGroup(categories),
-      // countRooms: new FormGroup(countRooms),
+      categories: new FormGroup(categories),
+      countRooms: new FormGroup(countRooms),
     });
 
 
