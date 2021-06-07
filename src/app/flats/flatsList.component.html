@@ -4,33 +4,44 @@
         <form [formGroup]="form" novalidate>
             <div class="form-group">
                 <h2>Город</h2>
-                <select>
-                    <option *ngFor="let city of citySelect" name="cities" formControlName="cities" [ngValue]="city">
-                        {{city}}
+                <select formControlName="cities" class="form-control">
+                    <option *ngFor="let city of cities" name="cities" [value]="city.id">
+                        {{city.name}}
                 </select>
             </div>
             <div class="form-group">
                 <h2>Категория</h2>
                 <ul>
-                    <li *ngFor="let category of checkboxesCategory">
-                        <label>
-                            <input name="categories" formGroupName="categorires" type="checkbox" [value]="category.name"
-                                [value]="category.name">
-                        </label>
-                        <label>
-                            <span>{{category.name}}</span>
-                        </label>
-                    </li>
+                    <div formGroupName="categories">
 
+                        <li *ngFor="let category of categories; let i = index">
+                            <label>
+                                <input name="categories" formControlName="{{i}}" type="checkbox" class="form-control"
+                                    (change)="checkValue($event)" [value]="category.id">
+                            </label>
+                            <label>
+                                <span>{{category.name}}</span>
+                            </label>
+                        </li>
+                    </div>
                 </ul>
             </div>
             <div class="form-group">
                 <h2>Количество комнат</h2>
-                <ul>
-                    <li *ngFor="let checkbox of checkboxesRoom">
-                        <input name="countRooms" formGroupName="countRooms" type="checkbox" [value]="checkbox.roomsAmount"> {{checkbox.roomsAmount}}
-                    </li>
-                </ul>
+                <div formGroupName="countRooms">
+                    <ul>
+                        <li *ngFor="let count of countRooms; let i = index">
+                            <label>
+                                <input name="countRooms" type="checkbox" class="form-control"
+                                    (change)="checkValue($event)" formControlName="{{i}}" [value]="count">
+                            </label>
+                            <label>
+                                <span>{{count}}</span>
+                            </label>
+
+                        </li>
+                    </ul>
+                </div>
             </div>
         </form>
     </aside>

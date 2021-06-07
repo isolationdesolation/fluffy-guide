@@ -17,20 +17,30 @@ import { roomsOptions, categoryOptions, citySelect, categoriesArray } from "src/
 
 export class FlatsListComponent implements OnInit {
 
-  checkboxesRoom = roomsOptions;
-  checkboxesCategory = categoryOptions;
-  citySelect = citySelect;
 
   flatResponse$: Observable<FlatResponse> | undefined;
   flatCard: Flat | undefined;
 
-  selectedCity: string = "Все города";
   defaultPage: number = 1;
   currentPageNumber: number = 1;
-  form: FormGroup;
+  form: FormGroup = new FormGroup({});
+  params: Array<string> = [];
 
-  cities: Array<string> = ["Все города", "Тюмень", "Москва", "Екатеринбург", "Сургут", "Нижневартовск", "Пермь", "Челябинск"]
-  countRooms = Array(5).fill(null);
+
+
+
+  cities: Array<{ name: string, id?: number }> = [
+    { name: "Все города" },
+    { id: 3, name: "Нижневартовск" },
+    { id: 13, name: "Челябинск" },
+    { id: 5, name: "Пермь" },
+    { id: 6, name: "Сургут" },
+    { id: 8, name: "Тюмень" },
+    { id: 1, name: "Москва" },
+    { id: 2, name: "Екатеринбург" },
+  ];
+  countRooms: Array<number> = Array.from({ length: 5 }, (_, i) => i + 1)
+
   categories = [
     { name: "квартира", id: "8" },
     { name: "дом", id: "4" },
@@ -44,27 +54,27 @@ export class FlatsListComponent implements OnInit {
     private httpService: FlatService,
   ) {
 
+  }
+
+  ngOnInit() {
+
     interface FormData {
       [name: string]: FormControl;
     }
 
-    const categories: FormData = {};
 
-    const countRooms: FormData = {};
+    let categories: FormData = {};
 
-    const cities: FormData = {};
+    let countRooms: FormData = {};
 
     this.countRooms.forEach((item, index) => {
       countRooms[index] = new FormControl();
     });
 
-    this.categories.forEach((item, index) => {
-      categories[index] = new FormControl();
+    this.categories.forEach((item, name) => {
+      categories[name] = new FormControl();
     })
 
-    this.cities.forEach((item, index) => {
-      cities[index] = new FormControl();
-    })
 
     this.form = new FormGroup({
       cities: new FormControl(""),
@@ -73,18 +83,39 @@ export class FlatsListComponent implements OnInit {
     });
 
 
-  }
+    this.form.valueChanges.subscribe(value => {
+      console.log(this.form.value)
+    });
 
 
-
-  submit(event: any) {
-    this.form.get("categories")?.setValue(event.target.value)
-    this.flatResponse$ = this.httpService.getFlatsWithFacets({ currentPage: this.currentPageNumber, flatCategory: this.form.get("categories")?.value })
-    console.log(this.form)
-  }
-
-  ngOnInit() {
     this.flatResponse$ = this.httpService.getFlatsWithFacets({ currentPage: this.defaultPage });
+  }
+
+
+
+  checkValue(event: any) {
+    console.log(event.target.value);
+    this.params.push(event.target.value)
+    console.log(this.params)
+
+  }
+  
+
+  onChange(event: any) {
+    console.log("смена")
+    console.log(event);
+
+    // ... do other stuff here ...
+  }
+
+
+  onFacetOptionsChange(event: any) {
+
+    this.form.valueChanges.subscribe(x => {
+      console.log('form value changed')
+      console.log(x)
+    })
+
   }
 
 }
