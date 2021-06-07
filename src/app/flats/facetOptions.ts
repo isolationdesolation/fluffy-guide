@@ -59,6 +59,15 @@ export const categoryId: Record<string, string> = {
     "коммерческая": "9",
 }
 
+export const categoriesArray: Array<{name: string, id: string}> =  [
+    { name: "квартира", id: "8" },
+    { name: "дом", id: "4" },
+    { name: "участок", id: "5" },
+    { name: "дом с участком", id: "10" },
+    { name: "дача", id: "11" },
+    { name: "коммерческая", id: "9" },
+  ];
+
 export const cityId: Record<string, string> = {
     "Нижневартовск": "3",
     "Челябинск": "13",

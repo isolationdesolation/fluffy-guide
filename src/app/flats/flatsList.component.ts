@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormArray, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { FlatResponse, Flat } from './flatDataType';
 import { FlatService } from "../facade/flat.services";
 import { Observable } from 'rxjs';
 
-import { roomsOptions, categoryOptions, citySelect } from "src/app/flats/facetOptions"
+import { roomsOptions, categoryOptions, citySelect, categoriesArray } from "src/app/flats/facetOptions"
 
 
 @Component({
@@ -15,57 +16,70 @@ import { roomsOptions, categoryOptions, citySelect } from "src/app/flats/facetOp
 
 
 export class FlatsListComponent implements OnInit {
+
+  checkboxesRoom = roomsOptions;
+  checkboxesCategory = categoryOptions;
+  citySelect = citySelect;
+  
   flatResponse$: Observable<FlatResponse> | undefined;
   flatCard: Flat | undefined;
 
   selectedCity: string = "Все города";
   defaultPage: number = 1;
   currentPageNumber: number = 1;
+  form: FormGroup;
 
-  checkboxesRoom = roomsOptions;
-  checkboxesCategory = categoryOptions;
-  citySelect = citySelect;
+  cities: Array<string> = ["Все города", "Тюмень", "Москва", "Екатеринбург", "Сургут", "Нижневартовск", "Пермь", "Челябинск"]
+  countRooms = Array(5).fill(null);
+  categories = [
+    { name: "квартира", id: "8" },
+    { name: "дом", id: "4" },
+    { name: "участок", id: "5" },
+    { name: "дом с участком", id: "10" },
+    { name: "дача", id: "11" },
+    { name: "коммерческая", id: "9" },
+  ];
 
-  constructor(private httpService: FlatService) {
+  constructor(
+    private httpService: FlatService,
+  ) {
+
+    interface FormData {
+      [name: string]: FormControl;
+    }
+
+    const countRooms: FormData = {};
+    this.countRooms.forEach((item, index) => {
+      countRooms[index] = new FormControl();
+    });
+
+    console.log(this.countRooms)
+    // this.categories.forEach((item, index) => {
+    //   this.categories[index] = new FormControl();
+    // })
+
+
+
+
+    this.form = new FormGroup({
+      cities: new FormControl(""),
+      // categories: new FormGroup(categories),
+      // countRooms: new FormGroup(countRooms),
+    });
+
+
   }
 
-  onRoomsCheckboxChange(e: any) {
-    if (e.target.checked) {
-      this.flatResponse$ = this.httpService.getFlatsWithFacets({currentPage: this.defaultPage, roomsAmount: e.target.value});
-    }
-    else {
-      this.flatResponse$ = this.httpService.getFlatsWithFacets({currentPage: this.defaultPage});
-    }
-  }
 
-  onCategoryCheckboxChange(e: any) {
-    if (e.target.checked) {
 
-      this.flatResponse$ = this.httpService.getFlatsWithFacets({currentPage: this.defaultPage, flatCategory:e.target.value});
-    } else {
-      this.flatResponse$ = this.httpService.getFlatsWithFacets({currentPage: this.defaultPage});
-    }
-  }
-
-  onCityChange(city: string) {
-    if (city !== "Все города") {
-      this.flatResponse$ = this.httpService.getFlatsWithFacets({currentPage: this.defaultPage, city: city});
-    }
-    else {
-      this.flatResponse$ = this.httpService.getFlatsWithFacets({currentPage: this.defaultPage});
-    }
-  }
-
-  onPageChange(page: number) {
-    if (page !== this.currentPageNumber) {
-      this.flatResponse$ = this.httpService.getFlatsWithFacets({currentPage: page});
-      this.currentPageNumber = page;
-    }
-
+  submit(event: any) {
+    this.form.get("categories")?.setValue(event.target.value)
+    this.flatResponse$ = this.httpService.getFlatsWithFacets({ currentPage: this.currentPageNumber, flatCategory: this.form.get("categories")?.value })
+    console.log(this.form)
   }
 
   ngOnInit() {
-    this.flatResponse$ = this.httpService.getFlatsWithFacets({currentPage: this.defaultPage});
+    this.flatResponse$ = this.httpService.getFlatsWithFacets({ currentPage: this.defaultPage });
   }
 
 }

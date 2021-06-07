@@ -11,25 +11,26 @@ import { share } from 'rxjs/internal/operators';
 export class FlatService {
 
     constructor(private http: HttpClient) {
-     }
+    }
 
-    
 
-    getFlatsWithFacets(parameters: Params)  {
-        
+
+    getFlatsWithFacets(parameters: Params) {
+
         let pageSize = 10;
         let params = new HttpParams();
         params = params.append("page_size", `${pageSize}`);
+        params = params.append("current_page", `${parameters.currentPage}`)
         if (parameters.city) {
             params = params.append("city_id", cityId[parameters.city]);
         }
         if (parameters.flatCategory) {
-            params = params.append("category_id__in", categoryId[parameters.flatCategory] );
+            params = params.append("category_id__in", categoryId[parameters.flatCategory]);
         }
         if (parameters.roomsAmount) {
             params = params.append("num_rooms__in", parameters.roomsAmount)
         }
-        return this.http.get<FlatResponse>(`https://www.sdvor.com/api/common/flats/`, {params: params}).pipe(share())
+        return this.http.get<FlatResponse>(`https://www.sdvor.com/api/common/flats/`, { params: params }).pipe(share())
     }
 
     getFlatWithId(id: number) {

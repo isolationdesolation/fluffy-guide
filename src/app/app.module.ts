@@ -8,7 +8,7 @@ import { LoaderComponent } from "./loader/loader.component";
 import { HttpClientModule } from '@angular/common/http';
 import { PaginationDirective } from './directives/pagination.directive';
 import { ActiveDirective } from './directives/active.directive';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
