@@ -61,3 +61,10 @@ export interface FlatResponse {
     previous: string | null;
     results: Flat[] | null;
 }
+
+export interface Params {
+    currentPage: number,
+    city?: string,
+    flatCategory?: string,
+    roomsAmount?: string
+}

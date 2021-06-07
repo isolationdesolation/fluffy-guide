@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FlatResponse, Flat } from './flatDataType';
-import { HttpService } from "./flats.service"
+import { FlatService } from "../facade/flat.services";
 import { Observable } from 'rxjs';
 
 import { roomsOptions, categoryOptions, citySelect } from "src/app/flats/facetOptions"
@@ -10,7 +10,7 @@ import { roomsOptions, categoryOptions, citySelect } from "src/app/flats/facetOp
   selector: 'app-flats',
   templateUrl: './flatsList.component.html',
   styleUrls: ['./flatsList.component.css'],
-  providers: [HttpService]
+  providers: [FlatService]
 })
 
 
@@ -26,46 +26,46 @@ export class FlatsListComponent implements OnInit {
   checkboxesCategory = categoryOptions;
   citySelect = citySelect;
 
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: FlatService) {
   }
 
   onRoomsCheckboxChange(e: any) {
     if (e.target.checked) {
-      this.flatResponse$ = this.httpService.getFlatsWithFacets(this.defaultPage, undefined, undefined, e.target.value);
+      this.flatResponse$ = this.httpService.getFlatsWithFacets({currentPage: this.defaultPage, roomsAmount: e.target.value});
     }
     else {
-      this.flatResponse$ = this.httpService.getFlatsWithFacets(this.defaultPage);
+      this.flatResponse$ = this.httpService.getFlatsWithFacets({currentPage: this.defaultPage});
     }
   }
 
   onCategoryCheckboxChange(e: any) {
     if (e.target.checked) {
 
-      this.flatResponse$ = this.httpService.getFlatsWithFacets(this.defaultPage, undefined, e.target.value);
+      this.flatResponse$ = this.httpService.getFlatsWithFacets({currentPage: this.defaultPage, flatCategory:e.target.value});
     } else {
-      this.flatResponse$ = this.httpService.getFlatsWithFacets(this.defaultPage);
+      this.flatResponse$ = this.httpService.getFlatsWithFacets({currentPage: this.defaultPage});
     }
   }
 
   onCityChange(city: string) {
     if (city !== "Все города") {
-      this.flatResponse$ = this.httpService.getFlatsWithFacets(this.defaultPage, city);
+      this.flatResponse$ = this.httpService.getFlatsWithFacets({currentPage: this.defaultPage, city: city});
     }
     else {
-      this.flatResponse$ = this.httpService.getFlatsWithFacets(this.defaultPage);
+      this.flatResponse$ = this.httpService.getFlatsWithFacets({currentPage: this.defaultPage});
     }
   }
 
   onPageChange(page: number) {
     if (page !== this.currentPageNumber) {
-      this.flatResponse$ = this.httpService.getFlatsWithFacets(page);
+      this.flatResponse$ = this.httpService.getFlatsWithFacets({currentPage: page});
       this.currentPageNumber = page;
     }
 
   }
 
   ngOnInit() {
-    this.flatResponse$ = this.httpService.getFlatsWithFacets(this.defaultPage);
+    this.flatResponse$ = this.httpService.getFlatsWithFacets({currentPage: this.defaultPage});
   }
 
 }

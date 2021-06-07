@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Flat } from "../flats/flatDataType";
-import { HttpService } from "./flat.service";
+import { FlatService } from "../facade/flat.services";
 import {Observable} from "rxjs"
 
 
@@ -10,7 +10,7 @@ import {Observable} from "rxjs"
     selector: 'flat-details',
     templateUrl: './flatPage.component.html',
     styleUrls: ['./flatPage.component.css'],
-    providers: [HttpService]
+    providers: [FlatService]
 })
 
 export class FlatPageComponent implements OnInit {
@@ -18,7 +18,7 @@ export class FlatPageComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private httpService: HttpService
+        private httpService: FlatService
     ) { }
 
     ngOnInit() {
