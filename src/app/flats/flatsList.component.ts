@@ -68,7 +68,7 @@ export class FlatsListComponent implements OnInit {
     let countRooms: FormData = {};
 
     this.countRooms.forEach((item, index) => {
-      countRooms[index] = new FormControl();
+      countRooms[item] = new FormControl();
     });
 
     this.categories.forEach((item, name) => {
@@ -84,11 +84,11 @@ export class FlatsListComponent implements OnInit {
 
 
     this.form.valueChanges.subscribe(value => {
-      console.log(this.form.value)
+      console.log(this.form.controls["countRooms"].value)
     });
 
 
-    this.flatResponse$ = this.httpService.getFlatsWithFacets({ currentPage: this.defaultPage });
+    this.flatResponse$ = this.httpService.getFlatsWithFacets({ currentPage: this.defaultPage, city: "", flatCategory: '', roomsAmount: this.form.controls["countRooms"].value });
   }
 
 
@@ -99,23 +99,6 @@ export class FlatsListComponent implements OnInit {
     console.log(this.params)
 
   }
-  
 
-  onChange(event: any) {
-    console.log("смена")
-    console.log(event);
-
-    // ... do other stuff here ...
-  }
-
-
-  onFacetOptionsChange(event: any) {
-
-    this.form.valueChanges.subscribe(x => {
-      console.log('form value changed')
-      console.log(x)
-    })
-
-  }
 
 }
