@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Flat } from "../flats/flatDataType";
 import { FlatService } from "../facade/flat.services";
-import {Observable} from "rxjs"
+import {Observable, Subscription} from "rxjs"
 
 
 
@@ -14,16 +14,22 @@ import {Observable} from "rxjs"
 })
 
 export class FlatPageComponent implements OnInit {
-    flat$: Observable<Flat>|undefined
+    public flat$: Subscription;
+    flat = {} as Flat;
+    isLoaded = false;
 
-    constructor(
-        private route: ActivatedRoute,
-        private httpService: FlatService
-    ) { }
+    constructor(private httpService: FlatService, private route: ActivatedRoute, ) {
+        this.flat$ = this.httpService.flat$.subscribe(
+          (flat$) => {
+            this.flat = flat$;
+            this.isLoaded = true;
+          }
+        );
+      }
 
     ngOnInit() {
         const routeParams = this.route.snapshot.paramMap;
         const flatIdFromRoute = Number(routeParams.get('id'));
-        this.flat$ = this.httpService.getFlatWithId(flatIdFromRoute);
+        this.httpService.getFlatWithId(flatIdFromRoute)
     }
 }

@@ -1,24 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray, FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { FlatResponse, Flat } from './flatDataType';
+import { Component, OnInit } from "@angular/core";
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormArray,
+  FormBuilder,
+  ReactiveFormsModule,
+} from "@angular/forms";
+import { FlatResponse, Flat } from "./flatDataType";
 import { FlatService } from "../facade/flat.services";
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, BehaviorSubject } from "rxjs";
 
-import { roomsOptions, categoryOptions, citySelect, categoriesArray } from "src/app/flats/facetOptions"
-
+import {
+  roomsOptions,
+  categoryOptions,
+  citySelect,
+  categoriesArray,
+} from "src/app/flats/facetOptions";
 
 @Component({
-  selector: 'app-flats',
-  templateUrl: './flatsList.component.html',
-  styleUrls: ['./flatsList.component.css'],
-  providers: [FlatService]
+  selector: "app-flats",
+  templateUrl: "./flatsList.component.html",
+  styleUrls: ["./flatsList.component.css"],
+  providers: [FlatService],
 })
-
-
 export class FlatsListComponent implements OnInit {
-
-
-  flatResponse$: Observable<FlatResponse> | undefined;
+  flatResponse = {
+    count: 0,
+    next: null,
+    previous: null,
+    results: null,
+  } as FlatResponse;
+  isLoaded = false;
+  public flatResponse$: Subscription;
   flatCard: Flat | undefined;
 
   defaultPage: number = 1;
@@ -27,7 +41,7 @@ export class FlatsListComponent implements OnInit {
   params: Array<string> = [];
   // subscription: Subscription;
 
-  cities: Array<{ name: string, id?: number }> = [
+  cities: Array<{ name: string; id?: number }> = [
     { name: "Все города" },
     { id: 3, name: "Нижневартовск" },
     { id: 13, name: "Челябинск" },
@@ -37,7 +51,7 @@ export class FlatsListComponent implements OnInit {
     { id: 1, name: "Москва" },
     { id: 2, name: "Екатеринбург" },
   ];
-  countRooms: Array<number> = Array.from({ length: 5 }, (_, i) => i + 1)
+  countRooms: Array<number> = Array.from({ length: 5 }, (_, i) => i + 1);
 
   categories = [
     { name: "квартира", id: "8" },
@@ -48,23 +62,20 @@ export class FlatsListComponent implements OnInit {
     { name: "коммерческая", id: "9" },
   ];
 
-
-
-  constructor(
-    private httpService: FlatService,
-  ) {
-
+  constructor(private httpService: FlatService) {
     // this.subscription = this.httpService.onFormChange(this.form).subscribe();
+    this.flatResponse$ = this.httpService.flatResponse$.subscribe(
+      (flatResponse$) => {
+        this.flatResponse = flatResponse$;
+        this.isLoaded = true;
+      }
+    );
   }
 
-
-
   ngOnInit() {
-
     interface FormData {
       [name: string]: FormControl;
     }
-
 
     let categories: FormData = {};
 
@@ -76,7 +87,7 @@ export class FlatsListComponent implements OnInit {
 
     this.categories.forEach((item, index) => {
       categories[item.id] = new FormControl();
-    })
+    });
 
     this.form = new FormGroup({
       cities: new FormControl(""),
@@ -84,17 +95,6 @@ export class FlatsListComponent implements OnInit {
       countRooms: new FormGroup(countRooms),
     });
 
-
-    this.form.valueChanges.subscribe(value => {
-      console.log("4343")
-    });
-
-
-    this.flatResponse$?.subscribe(this.httpService.flatResponse$)
+    this.httpService.getFlatsWithFacets(this.form, this.currentPageNumber.toString());
   }
-
-
-
-
-
 }

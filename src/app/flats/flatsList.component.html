@@ -5,9 +5,9 @@
             <div class="form-group">
                 <h2>Город</h2>
                 <select formControlName="cities" class="form-control">
-                    <option *ngFor="let city of cities" name="cities" [value]="city.id">
-                        {{city.name}}
-                </select>
+          <option *ngFor="let city of cities" name="cities" [value]="city.id">
+            {{city.name}}
+        </select>
             </div>
             <div class="form-group">
                 <h2>Категория</h2>
@@ -16,12 +16,11 @@
 
                         <li *ngFor="let category of categories; let i = index">
                             <label>
-                                <input formControlName="{{category.id}}" type="checkbox" class="form-control"
-                                    [value]="category.id">
-                            </label>
+                <input formControlName="{{category.id}}" type="checkbox" class="form-control" [value]="category.id">
+              </label>
                             <label>
-                                <span>{{category.name}}</span>
-                            </label>
+                <span>{{category.name}}</span>
+              </label>
                         </li>
                     </div>
                 </ul>
@@ -32,11 +31,11 @@
                     <ul>
                         <li *ngFor="let count of countRooms; let i = index">
                             <label>
-                                <input type="checkbox" class="form-control" formControlName="{{count}}" [value]="count">
-                            </label>
+                <input type="checkbox" class="form-control" formControlName="{{count}}" [value]="count">
+              </label>
                             <label>
-                                <span>{{count}}</span>
-                            </label>
+                <span>{{count}}</span>
+              </label>
 
                         </li>
                     </ul>
@@ -45,16 +44,16 @@
         </form>
     </aside>
     <section>
-        <pre *ngIf="!(flatResponse$ | async)"> <loader></loader></pre>
-        <ng-container *ngIf="{flatResponse: flatResponse$ | async} as data;">
+        <pre *ngIf="!(isLoaded)"> <loader></loader></pre>
+        <ng-container *ngIf="{flatResponse: flatResponse} as data;">
             <div class="listing-container">
                 <ul class="flatCards">
                     <li *ngFor="let flatCard of data.flatResponse?.results">
                         <span>{{flatCard?.category?.name}}, {{flatCard?.id}}</span>
                         <div>
                             <a class="" routerLink="/flats/{{flatCard?.id}}">
-                                {{flatCard?.city?.name}} {{flatCard?.address}}
-                            </a>
+                {{flatCard?.city?.name}} {{flatCard?.address}}
+              </a>
                         </div>
                         <p>{{flatCard?.square}} кв.м, <span>{{flatCard?.price}} ₽</span></p>
                     </li>
@@ -63,13 +62,12 @@
 
             <div class="pagination" *ngIf="data.flatResponse!.count !== 0">
                 <button appPagination #pagination="appPagination" [totalPages]="2" (click)="pagination.first()" [disabled]="data.flatResponse!.previous === null" *ngIf="data.flatResponse!.previous !== null">
-                    < </button>
-                <button appPagination #pagination="appPagination" [totalPages]="2" *ngIf=" data.flatResponse!.previous !== null || (currentPageNumber == 1 && data.flatResponse!.next!== null)">
-                            {{currentPageNumber}}
-                        </button>
+          < </button> <button appPagination #pagination="appPagination" [totalPages]="2" *ngIf=" data.flatResponse!.previous !== null || (currentPageNumber == 1 && data.flatResponse!.next!== null)">
+            {{currentPageNumber}}
+        </button>
                 <button appPagination #pagination="appPagination" [totalPages]="2" (click)="pagination.next()" [disabled]="pagination.isLast" *ngIf="data.flatResponse!.next !== null">
-                            >
-                        </button>
+          >
+        </button>
             </div>
         </ng-container>
     </section>

@@ -1,37 +1,36 @@
-<pre *ngIf="!(flat$ | async)"> <loader></loader></pre>
+<pre *ngIf="!(isLoaded)"> <loader></loader></pre>
 
 <div class="content">
 
-<ng-container
-  *ngIf="
+    <ng-container *ngIf="
     {
-      flat: flat$ | async
+      flat: flat
     } as data;
-  "
->
+  ">
 
-    <h2>г.{{data.flat?.city?.name }}, {{data.flat?.address}}</h2>
-    
-    <div class="card-container">  <h1>Данные по объекту</h1>
-        <h3> {{data.flat?.extraInformation}}</h3>
-        <p>Адрес: {{data.flat?.address}}</p>
-        <p>Площадь: {{data.flat?.square}} м<sup>2</sup></p>
-        <p>Количество комнат: {{data.flat?.numRooms}}</p>
-        <p>Этаж: {{data.flat?.floor}}/{{data.flat?.floorsHouse}}</p>
-        <p>Исполнение: {{data.flat?.material}}</p>
-        <p>Отделка: {{data.flat?.finishing}}</p>
-        <p>Срок сдачи: {{data.flat?.dateConstruction}}</p>
-        <p>Застройщик: {{data.flat?.constructionCompany}}</p>
+        <h2>г.{{data.flat?.city?.name }}, {{data.flat?.address}}</h2>
+
+        <div class="card-container">
+            <h1>Данные по объекту</h1>
+            <h3> {{data.flat?.extraInformation}}</h3>
+            <p>Адрес: {{data.flat?.address}}</p>
+            <p>Площадь: {{data.flat?.square}} м<sup>2</sup></p>
+            <p>Количество комнат: {{data.flat?.numRooms}}</p>
+            <p>Этаж: {{data.flat?.floor}}/{{data.flat?.floorsHouse}}</p>
+            <p>Исполнение: {{data.flat?.material}}</p>
+            <p>Отделка: {{data.flat?.finishing}}</p>
+            <p>Срок сдачи: {{data.flat?.dateConstruction}}</p>
+            <p>Застройщик: {{data.flat?.constructionCompany}}</p>
             <div *ngFor="let image of data.flat?.images">
-                <div> 
+                <div>
                     <img src="{{image.image}}">
                 </div>
             </div>
-        <p>Стоимость: {{data.flat?.price}}</p>
-        <p>Контактное лицо: {{data.flat?.contactPerson}}, {{data.flat?.contactPhone}}</p>
-        <p>Email: {{data.flat?.contactEmail}}</p>
-    
-    </div>
+            <p>Стоимость: {{data.flat?.price}}</p>
+            <p>Контактное лицо: {{data.flat?.contactPerson}}, {{data.flat?.contactPhone}}</p>
+            <p>Email: {{data.flat?.contactEmail}}</p>
 
-</ng-container>
+        </div>
+
+    </ng-container>
 </div>
