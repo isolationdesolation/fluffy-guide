@@ -14,8 +14,8 @@ import { FormGroup, FormControl, Validators, FormArray, FormBuilder, ReactiveFor
 
 export class FlatService {
 
-    flat$: Observable<Flat> | undefined;
-    flatResponse$: Observable<FlatResponse> | undefined;
+    flat$: Subject<Flat> | undefined;
+    flatResponse$: Subject<FlatResponse> | undefined;
 
     // subject$: Subject<FlatResponse>
     // flatsubject: Subject<Flat>
@@ -30,8 +30,6 @@ export class FlatService {
     // // params - из данных
     //         this.subject$ = this.http.get<FlatResponse>(`https://www.sdvor.com/api/common/flats/`, { params: params })
     //     }
-
-
 
 
     getFlatsWithFacets(form: FormGroup) {
@@ -49,8 +47,8 @@ export class FlatService {
         let roomsArr = Object.keys(removeFalsy(raw.countRooms));
 
         params = params.append("page_size", `${pageSize}`);
-        params = params.append("current_page", `1`)
-        if (raw.cities) {
+        // params = params.append("current_page", `1`)
+        if (raw.cities !== undefined) {
             params = params.append("city_id", raw.cities);
         }
         if (categoriesArr) {
@@ -59,17 +57,11 @@ export class FlatService {
         if (roomsArr) {
             params = params.append("num_rooms__in", roomsArr.join())
         }
-        if (roomsArr.length === 0) {
-            params.delete("num_rooms__in")
-        }
-        if (categoriesArr.length === 0) {
-            params.delete("category_id__in")
-        }
-        if ( raw.cities === undefined) {
-            params.delete("city_id")
-        }
-        console.log(raw.city)
-        return this.http.get<FlatResponse>(`https://www.sdvor.com/api/common/flats/`, { params: params })
+        params.delete("city_id", undefined)
+        params.delete("category_id__in", undefined)
+        params.delete("num_rooms__in", undefined)
+
+        this.http.get<FlatResponse>(`https://www.sdvor.com/api/common/flats/`, {params: params}).subscribe(this.flatResponse$)
     }
 
     getFlatWithId(id: number) {

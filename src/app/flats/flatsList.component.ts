@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { FlatResponse, Flat } from './flatDataType';
 import { FlatService } from "../facade/flat.services";
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 
 import { roomsOptions, categoryOptions, citySelect, categoriesArray } from "src/app/flats/facetOptions"
 
@@ -18,7 +18,7 @@ import { roomsOptions, categoryOptions, citySelect, categoriesArray } from "src/
 export class FlatsListComponent implements OnInit {
 
 
-  flatResponse$: Observable<FlatResponse> | undefined;
+  flatResponse$: Subject<FlatResponse> | undefined;
   flatCard: Flat | undefined;
 
   defaultPage: number = 1;
@@ -86,11 +86,11 @@ export class FlatsListComponent implements OnInit {
 
 
     this.form.valueChanges.subscribe(value => {
-      this.flatResponse$ = this.httpService.getFlatsWithFacets(this.form)
+    this.httpService.getFlatsWithFacets(this.form)
     });
     
     
-    this.flatResponse$ = this.httpService.getFlatsWithFacets(this.form);
+    this.httpService.getFlatsWithFacets(this.form);
   }
 
     
