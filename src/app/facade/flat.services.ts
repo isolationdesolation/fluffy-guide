@@ -61,7 +61,8 @@ export class FlatService {
         params.delete("category_id__in", undefined)
         params.delete("num_rooms__in", undefined)
 
-        this.http.get<FlatResponse>(`https://www.sdvor.com/api/common/flats/`, {params: params}).subscribe(this.flatResponse$)
+        this.http.get<FlatResponse>(`https://www.sdvor.com/api/common/flats/`, {params: params}).subscribe(data => { this.flatResponse$?.next(data); }
+        )
     }
 
     getFlatWithId(id: number) {
