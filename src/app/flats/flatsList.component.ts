@@ -1,22 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import {
   FormGroup,
-  FormControl,
-  Validators,
-  FormArray,
-  FormBuilder,
-  ReactiveFormsModule,
+  FormControl
 } from "@angular/forms";
 import { FlatResponse, Flat } from "./flatDataType";
 import { FlatService } from "../facade/flat.services";
-import { Observable, Subscription, BehaviorSubject } from "rxjs";
+import { Subscription } from "rxjs";
 
-import {
-  roomsOptions,
-  categoryOptions,
-  citySelect,
-  categoriesArray,
-} from "src/app/flats/facetOptions";
 
 @Component({
   selector: "app-flats",
@@ -39,7 +29,6 @@ export class FlatsListComponent implements OnInit {
   currentPageNumber: number = 1;
   form: FormGroup = new FormGroup({});
   params: Array<string> = [];
-  // subscription: Subscription;
 
   cities: Array<{ name: string; id?: number }> = [
     { name: "Все города" },
@@ -63,7 +52,6 @@ export class FlatsListComponent implements OnInit {
   ];
 
   constructor(private httpService: FlatService) {
-    // this.subscription = this.httpService.onFormChange(this.form).subscribe();
     this.flatResponse$ = this.httpService.flatResponse$.subscribe(
       (flatResponse$) => {
         this.flatResponse = flatResponse$;
@@ -95,6 +83,20 @@ export class FlatsListComponent implements OnInit {
       countRooms: new FormGroup(countRooms),
     });
 
+    this.form.valueChanges.subscribe((value) => {
+      this.httpService.getFlatsWithFacets(this.form, this.currentPageNumber.toString());
+    });
+
+
     this.httpService.getFlatsWithFacets(this.form, this.currentPageNumber.toString());
+  }
+
+  onPageChange(page: number) {
+    if (page !== this.currentPageNumber) {
+      this.currentPageNumber = page;
+
+      this.httpService.getFlatsWithFacets(this.form, this.currentPageNumber.toString());
+    }
+
   }
 }

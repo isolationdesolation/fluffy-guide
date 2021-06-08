@@ -1,16 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
-import { Flat, FlatResponse, Params } from "../flats/flatDataType";
-import { categoryId, cityId } from "../flats/facetOptions";
-import { share } from "rxjs/internal/operators";
-import { Observable, Subject, BehaviorSubject } from "rxjs";
+import { Flat, FlatResponse} from "../flats/flatDataType";
+import { BehaviorSubject } from "rxjs";
 import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormArray,
-  FormBuilder,
-  ReactiveFormsModule,
+  FormGroup
 } from "@angular/forms";
 
 @Injectable()
@@ -57,7 +50,7 @@ export class FlatService {
     let roomsArr = Object.keys(removeFalsy(raw.countRooms));
 
     params = params.append("page_size", `${pageSize}`);
-    params = params.append("current_page", `;${currentPage}`)
+    params = params.append("page", `${currentPage}`)
     if (raw.cities !== undefined) {
       params = params.append("city_id", raw.cities);
     }

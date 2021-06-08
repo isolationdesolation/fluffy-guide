@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Flat } from "../flats/flatDataType";
 import { FlatService } from "../facade/flat.services";
-import {Observable, Subscription} from "rxjs"
+import { Subscription} from "rxjs"
 
 
 
