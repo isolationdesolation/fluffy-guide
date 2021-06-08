@@ -27,10 +27,6 @@ export class FlatsListComponent implements OnInit {
   params: Array<string> = [];
   // subscription: Subscription;
 
-
-
-
-
   cities: Array<{ name: string, id?: number }> = [
     { name: "Все города" },
     { id: 3, name: "Нижневартовск" },
@@ -90,11 +86,10 @@ export class FlatsListComponent implements OnInit {
 
 
     this.form.valueChanges.subscribe(value => {
-      console.log(this.form.getRawValue())
+      this.flatResponse$ = this.httpService.getFlatsWithFacets(this.form)
     });
     
-
-
+    
     this.flatResponse$ = this.httpService.getFlatsWithFacets(this.form);
   }
 

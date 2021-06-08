@@ -14,22 +14,22 @@ import { FormGroup, FormControl, Validators, FormArray, FormBuilder, ReactiveFor
 
 export class FlatService {
 
-    flat$: Observable<Flat>|undefined;
+    flat$: Observable<Flat> | undefined;
     flatResponse$: Observable<FlatResponse> | undefined;
 
     // subject$: Subject<FlatResponse>
     // flatsubject: Subject<Flat>
 
-    
+
 
     constructor(private http: HttpClient) {
     }
 
 
-//     onFormChange(form: FormGroup ): void {
-// // params - из данных
-//         this.subject$ = this.http.get<FlatResponse>(`https://www.sdvor.com/api/common/flats/`, { params: params })
-//     }
+    //     onFormChange(form: FormGroup ): void {
+    // // params - из данных
+    //         this.subject$ = this.http.get<FlatResponse>(`https://www.sdvor.com/api/common/flats/`, { params: params })
+    //     }
 
 
 
@@ -38,19 +38,37 @@ export class FlatService {
         let raw = form.getRawValue();
         let pageSize = 10;
         let params = new HttpParams();
-        
+        const removeFalsy = (obj: any) => {
+            let newObj: any = {};
+            Object.keys(obj).forEach((prop) => {
+                if (obj[prop]) { newObj[prop] = obj[prop]; }
+            });
+            return newObj;
+        };
+        let categoriesArr = Object.keys(removeFalsy(raw.categories));
+        let roomsArr = Object.keys(removeFalsy(raw.countRooms));
 
         params = params.append("page_size", `${pageSize}`);
         params = params.append("current_page", `1`)
         if (raw.cities) {
             params = params.append("city_id", raw.cities);
-        // }
-        // if (parameters.flatCategory) {
-        //     params = params.append("category_id__in", categoryId[parameters.flatCategory]);
-        // }
-        // if (parameters.roomsAmount) {
-        //     params = params.append("num_rooms__in", parameters.roomsAmount)
-         }
+        }
+        if (categoriesArr) {
+            params = params.append("category_id__in", categoriesArr.join());
+        }
+        if (roomsArr) {
+            params = params.append("num_rooms__in", roomsArr.join())
+        }
+        if (roomsArr.length === 0) {
+            params.delete("num_rooms__in")
+        }
+        if (categoriesArr.length === 0) {
+            params.delete("category_id__in")
+        }
+        if ( raw.cities === undefined) {
+            params.delete("city_id")
+        }
+        console.log(raw.city)
         return this.http.get<FlatResponse>(`https://www.sdvor.com/api/common/flats/`, { params: params })
     }
 
