@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { FlatResponse, Flat } from './flatDataType';
 import { FlatService } from "../facade/flat.services";
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { roomsOptions, categoryOptions, citySelect, categoriesArray } from "src/app/flats/facetOptions"
 
@@ -25,6 +25,8 @@ export class FlatsListComponent implements OnInit {
   currentPageNumber: number = 1;
   form: FormGroup = new FormGroup({});
   params: Array<string> = [];
+  // subscription: Subscription;
+
 
 
 
@@ -50,11 +52,16 @@ export class FlatsListComponent implements OnInit {
     { name: "коммерческая", id: "9" },
   ];
 
+  
+
   constructor(
     private httpService: FlatService,
   ) {
 
-  }
+    // this.subscription = this.httpService.onFormChange(this.form).subscribe();
+}
+
+
 
   ngOnInit() {
 
@@ -71,10 +78,9 @@ export class FlatsListComponent implements OnInit {
       countRooms[item] = new FormControl();
     });
 
-    this.categories.forEach((item, name) => {
-      categories[name] = new FormControl();
+    this.categories.forEach((item, index) => {
+      categories[item.id] = new FormControl();
     })
-
 
     this.form = new FormGroup({
       cities: new FormControl(""),
@@ -84,21 +90,16 @@ export class FlatsListComponent implements OnInit {
 
 
     this.form.valueChanges.subscribe(value => {
-      console.log(this.form.controls["countRooms"].value)
+      console.log(this.form.getRawValue())
     });
+    
 
 
-    this.flatResponse$ = this.httpService.getFlatsWithFacets({ currentPage: this.defaultPage, city: "", flatCategory: '', roomsAmount: this.form.controls["countRooms"].value });
+    this.flatResponse$ = this.httpService.getFlatsWithFacets(this.form);
   }
 
+    
 
-
-  checkValue(event: any) {
-    console.log(event.target.value);
-    this.params.push(event.target.value)
-    console.log(this.params)
-
-  }
 
 
 }

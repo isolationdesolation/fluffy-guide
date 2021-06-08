@@ -16,8 +16,8 @@
 
                         <li *ngFor="let category of categories; let i = index">
                             <label>
-                                <input name="categories" formControlName="{{i}}" type="checkbox" class="form-control"
-                                    (change)="checkValue($event)" [value]="category.id">
+                                <input formControlName="{{category.id}}" type="checkbox" class="form-control"
+                                    [value]="category.id">
                             </label>
                             <label>
                                 <span>{{category.name}}</span>
@@ -32,8 +32,7 @@
                     <ul>
                         <li *ngFor="let count of countRooms; let i = index">
                             <label>
-                                <input name="countRooms" type="checkbox" class="form-control"
-                                    (change)="checkValue($event)" formControlName="{{i}}" [value]="count">
+                                <input type="checkbox" class="form-control" formControlName="{{count}}" [value]="count">
                             </label>
                             <label>
                                 <span>{{count}}</span>
