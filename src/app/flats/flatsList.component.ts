@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import {
   FormGroup,
   FormControl
@@ -14,7 +14,7 @@ import { Subscription } from "rxjs";
   styleUrls: ["./flatsList.component.css"],
   providers: [FlatService],
 })
-export class FlatsListComponent implements OnInit {
+export class FlatsListComponent implements OnInit, OnDestroy {
   flatResponse = {
     count: 0,
     next: null,
@@ -97,6 +97,12 @@ export class FlatsListComponent implements OnInit {
 
       this.httpService.getFlatsWithFacets(this.form, this.currentPageNumber.toString());
     }
+
+  }
+
+  ngOnDestroy() {
+    this.flatResponse$.unsubscribe()
+    console.log(this.flatResponse$.closed, "ere")
 
   }
 }

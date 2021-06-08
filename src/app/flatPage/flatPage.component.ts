@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Flat } from "../flats/flatDataType";
 import { FlatService } from "../facade/flat.services";
@@ -13,7 +13,7 @@ import { Subscription} from "rxjs"
     providers: [FlatService]
 })
 
-export class FlatPageComponent implements OnInit {
+export class FlatPageComponent implements OnInit, OnDestroy {
     public flat$: Subscription;
     flat = {} as Flat;
     isLoaded = false;
@@ -32,4 +32,8 @@ export class FlatPageComponent implements OnInit {
         const flatIdFromRoute = Number(routeParams.get('id'));
         this.httpService.getFlatWithId(flatIdFromRoute)
     }
+
+    ngOnDestroy() {
+        this.flat$.unsubscribe()
+      }
 }
